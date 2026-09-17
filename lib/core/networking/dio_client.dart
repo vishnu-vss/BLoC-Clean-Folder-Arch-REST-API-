@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 class DioClient {
   late final Dio _dio;
 
-  DioClient({required String baseUrl})
+  DioClient()
     : _dio = Dio(
         BaseOptions(
           baseUrl: 'https://jsonplaceholder.typicode.com',

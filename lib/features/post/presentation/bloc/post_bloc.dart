@@ -9,9 +9,9 @@ part 'post_event.dart';
 part 'post_state.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  final GetPostUsecase _getPostUsecase;
+  final GetPostUsecase getPostUsecase;
 
-  PostBloc(this._getPostUsecase) : super(PostInitial()) {
+  PostBloc({required this.getPostUsecase}) : super(PostInitial()) {
     on<FetchPostsEvent>(_onFetchPosts);
   }
 
@@ -20,7 +20,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     Emitter<PostState> emit,
   ) async {
     emit(PostLoading(posts: [...state.posts]));
-    final result = await _getPostUsecase.call(NoParams());
+    final result = await getPostUsecase.call(NoParams());
     result.fold(
       (failure) =>
           emit(PostError(message: failure.toString(), posts: [...state.posts])),

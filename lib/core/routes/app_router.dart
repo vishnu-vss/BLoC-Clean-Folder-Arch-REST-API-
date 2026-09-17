@@ -13,8 +13,8 @@ abstract class AppRouter {
         builder: (context, state) => const PostFetchScreen(),
       ),
       GoRoute(
-        path: '/posts-create',
-        name: 'posts-create',
+        path: '/create',
+        name: 'create_post',
         builder: (context, state) => const PostCreateScreen(),
       ),
     ],

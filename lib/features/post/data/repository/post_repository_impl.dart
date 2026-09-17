@@ -7,13 +7,13 @@ import '../datasource/post_remote_data_source.dart';
 import '../models/post_model.dart';
 
 class PostRepositoryImpl implements PostRepository {
-  final PostRemoteDataSource _postRemoteDataSource;
-  PostRepositoryImpl(this._postRemoteDataSource);
+  final PostRemoteDataSource postRemoteDataSource;
+  PostRepositoryImpl(this.postRemoteDataSource);
 
   @override
   Future<Either<Exception, PostEntities>> createPost(PostEntities post) {
     try {
-      return _postRemoteDataSource.createPost(PostModel.fromEntity(post));
+      return postRemoteDataSource.createPost(PostModel.fromEntity(post));
     } on DioException catch (ex) {
       return Future.value(
         Left(Exception('Failed to create post: ${ex.message}')),
@@ -28,7 +28,7 @@ class PostRepositoryImpl implements PostRepository {
   @override
   Future<Either<Exception, List<PostEntities>>> getPosts() {
     try {
-      return _postRemoteDataSource.getPosts();
+      return postRemoteDataSource.getPosts();
     } on DioException catch (ex) {
       return Future.value(
         Left(Exception('Failed to fetch posts: ${ex.message}')),
