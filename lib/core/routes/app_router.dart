@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 
-import '../../features/post/presentation/screens/post_create_screen.dart';
 import '../../features/post/presentation/screens/post_fetch_screen.dart';
 
 abstract class AppRouter {
@@ -11,11 +10,6 @@ abstract class AppRouter {
         path: '/',
         name: 'posts',
         builder: (context, state) => const PostFetchScreen(),
-      ),
-      GoRoute(
-        path: '/create',
-        name: 'create_post',
-        builder: (context, state) => const PostCreateScreen(),
       ),
     ],
   );
